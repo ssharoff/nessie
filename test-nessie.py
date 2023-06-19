@@ -11,8 +11,8 @@ def reporttime(oldtime,label):
 starttime=int(time.time())
 
 text_data = load_text_classification_tsv("text_classification.tsv")
-
-cv = CrossValidationHelper(n_splits=10)
+print(text_data.num_instances,text_data.num_labels)
+cv = CrossValidationHelper(n_splits=3)
 
 classifier = TransformerTextClassifier(max_epochs=2, model_name = "ssharoff/genres") # 'xlm-roberta-base')
 tc_result = cv.run(text_data.texts, text_data.noisy_labels, classifier)
